@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Element Reference</title>
+  <meta name="description" content="A categorized, searchable reference of HTML elements with live previews.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="bracket">&lt;/&gt;</span> HTML Reference <span class="version">v1.0</span>
+    </div>
+    <div class="search-wrap">
+      <input id="search-input" type="text" placeholder="Cari tag... contoh: button, table, img">
+    </div>
+    <span class="element-count" id="element-count"></span>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar-categories" aria-label="Categories"></nav>
+
+    <main class="content">
+      <div class="intro">
+        <h1>HTML Element Reference</h1>
+        <p>Setiap tag dikelompokkan per kategori, lengkap dengan syntax, atribut umum, dan live preview hasil render-nya langsung di browser.</p>
+      </div>
+      <div id="content"></div>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
