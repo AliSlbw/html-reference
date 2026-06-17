@@ -28,11 +28,26 @@ function renderSidebar() {
   `).join('');
 }
 
+function attrRow(attr) {
+  let valueMarkup;
+  if (attr.boolean) {
+    valueMarkup = `<span class="attr-values is-bool">boolean attribute</span>`;
+  } else if (attr.values && attr.values.length) {
+    valueMarkup = `<span class="attr-values">${attr.values.map((v) => `<code>${escapeHtml(v)}</code>`).join('')}</span>`;
+  } else {
+    valueMarkup = `<span class="attr-values is-free">free value</span>`;
+  }
+  return `<div class="attr-row"><code class="attr-name">${escapeHtml(attr.name)}</code>${valueMarkup}</div>`;
+}
+
 function elementCard(el) {
   const tagDisplay = `<span class="lt">&lt;</span>${escapeHtml(el.tag)}<span class="gt">&gt;</span>`;
   const previewMarkup = el.demo && el.demo.trim()
     ? `<div class="preview-pane">${el.demo}</div>`
     : `<div class="no-visual">No direct visual output</div>`;
+  const attrsMarkup = el.attrs && el.attrs.length
+    ? `<div class="attrs-block">${el.attrs.map(attrRow).join('')}</div>`
+    : `<p class="no-visual">No notable attributes</p>`;
 
   return `
     <div class="card" data-tag="${el.tag.toLowerCase()}">
@@ -45,7 +60,8 @@ function elementCard(el) {
         <div>
           <p class="panel-label">Syntax</p>
           <pre class="syntax-block">${escapeHtml(el.syntax)}</pre>
-          <p class="attrs-line">Common attributes: <code>${escapeHtml(el.attrs)}</code></p>
+          <p class="panel-label" style="margin-top:14px">Attributes</p>
+          ${attrsMarkup}
         </div>
         <div>
           <p class="panel-label">Live preview</p>

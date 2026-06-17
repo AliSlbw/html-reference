@@ -279,6 +279,48 @@ a { color: var(--accent); text-decoration: none; }
   color: var(--text);
 }
 
+.attrs-block { display: flex; flex-direction: column; gap: 7px; }
+
+.attr-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.78rem;
+}
+
+.attr-name {
+  font-family: var(--font-mono);
+  background: var(--bg-inset);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.attr-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  color: var(--text-muted);
+}
+
+.attr-values code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: rgba(255, 140, 66, 0.08);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.attr-values.is-bool,
+.attr-values.is-free {
+  font-style: italic;
+  font-size: 0.76rem;
+}
+
 .preview-pane {
   font-size: 0.9rem;
 }
